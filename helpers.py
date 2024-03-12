@@ -34,7 +34,7 @@ def convertDecimalToBinary(sDecimal):
     # remove 0b
     sNumberPortion = str(bin(int(sDecimal.split(".")[0])))[2:]
 
-    # we return a string because float cannot handle past 10 decimal digits
+    # we return a string because float cannot handle past a couple # of digits
     if("." in sDecimal):
         sDecimalPortion = convertDecimalOfDecimalToBinary(sDecimal.split(".")[1])
         sFinalBinary = sNumberPortion + "." + sDecimalPortion
@@ -76,7 +76,7 @@ def inputBinaryMantissaBase2(sMantissa, sBase2):
 
     # insert code here later if exponent value is beyond the allowed version or less than
 
-    # conversion for easy data manip
+    # conversion for easy data manipulation
     nBase2 = int(sBase2)
 
     # is it 1.f format?
