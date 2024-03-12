@@ -174,9 +174,8 @@ def encodeMantissa(sMantissa):
     
     return sTruncatedMantissa
 
-
-# currently unused, to be tested later
 def inputDecimalBase10(decimal, base10):
-    decimal = float(decimal) * base10 * 10
-    convertDecimalToBinary(decimal)
-    return
+    fDecimal = float(decimal) * int(base10) * 10
+    sBinary = convertDecimalToBinary(str(fDecimal))
+
+    return inputBinaryMantissaBase2(sBinary, 0)

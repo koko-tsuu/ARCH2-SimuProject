@@ -3,7 +3,7 @@ import helpers
 def main():
     # need to handle negative (check if '-' at first pos)
     # bawal floating points ata for exponent?
-    print(helpers.inputBinaryMantissaBase2("1.011111", "-16"))
+    print(helpers.inputDecimalBase10("1241.01", "2"))
 
 
 if __name__ == '__main__':
