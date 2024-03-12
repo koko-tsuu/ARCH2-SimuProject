@@ -74,7 +74,33 @@ def convertDecimalOfDecimalToBinary(sDecimal):
 
 def inputBinaryMantissaBase2(sMantissa, sBase2):
 
-    pass
+    # insert code here later if exponent value is beyond the allowed version or less than
+
+    # conversion for easy data manip
+    nBase2 = int(sBase2)
+
+    # is it 1.f format?
+    if (sMantissa[0:1] != '1.'):
+        
+        if("." in sMantissa):
+            # we need to move it manually using strings
+            nDecimalPointIndex = sMantissa.index('.')
+
+            # -1 because we don't move the decimal point beyond MSb
+            nBase2Moves = nDecimalPointIndex - 1
+
+            sMantissa = sMantissa.replace('.', '')
+            sMantissa = "1." + sMantissa[1:]
+
+            nBase2 = nBase2 + nBase2Moves
+        else:
+            # -1 because we don't move the decimal point beyond MSb
+            nBase2Moves = len(sMantissa) - 1
+            
+            sMantissa = "1." + sMantissa[1:]
+            nBase2 = nBase2 + nBase2Moves
+
+    return sMantissa, str(nBase2)
 
 
 # currently unused, to be tested later

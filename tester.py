@@ -1,7 +1,11 @@
 import helpers
 
 def main():
-    print(helpers.convertDecimalToBinary("23214.50"))
+
+    sMantissa, sBase2 = helpers.inputBinaryMantissaBase2("1.0101111", "9")
+    print(sMantissa)
+    print(sBase2)
+
 
 if __name__ == '__main__':
     main()
