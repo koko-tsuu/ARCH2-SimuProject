@@ -80,19 +80,27 @@ def inputBinaryMantissaBase2(sMantissa, sBase2):
     nBase2 = int(sBase2)
 
     # is it 1.f format?
-    if (sMantissa[0:1] != '1.'):
-        
+    if (sMantissa[0:2] != '1.'):
         if("." in sMantissa):
-            # we need to move it manually using strings
-            nDecimalPointIndex = sMantissa.index('.')
+            if(sMantissa[0:2] == '0.'):
 
-            # -1 because we don't move the decimal point beyond MSb
-            nBase2Moves = nDecimalPointIndex - 1
+                n1Index = sMantissa.index('1')
+                sMantissa = '1.' + sMantissa[n1Index+1:]
+                
+                # minus 1 because decimal point was included in finding index
+                nBase2 -= (n1Index - 1)
 
-            sMantissa = sMantissa.replace('.', '')
-            sMantissa = "1." + sMantissa[1:]
+            else:    
+                # we need to move it manually using strings
+                nDecimalPointIndex = sMantissa.index('.')
 
-            nBase2 = nBase2 + nBase2Moves
+                # -1 because we don't move the decimal point beyond MSb
+                nBase2Moves = nDecimalPointIndex - 1
+
+                sMantissa = sMantissa.replace('.', '')
+                sMantissa = "1." + sMantissa[1:]
+
+                nBase2 = nBase2 + nBase2Moves
         else:
             # -1 because we don't move the decimal point beyond MSb
             nBase2Moves = len(sMantissa) - 1
