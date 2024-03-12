@@ -80,7 +80,20 @@ def inputBinaryMantissaBase2(sMantissa, sBase2):
         sMantissa = sMantissa[1:]
         sMSb = '1'
 
-    # conversion for easy data manipulation
+    sMantissa, sBase2 = onefFormat(sMantissa, sBase2)
+
+    # if denormalized
+    return encodeToFloatingFormat(sMSb, sMantissa, sBase2)
+
+def encodeToFloatingFormat(sMSb, sMantissa, sBase2):
+    
+    sMantissa, sExponent = encodeExponent(sMantissa, sBase2)
+    sTruncatedMantissa = encodeMantissa(sMantissa)
+    
+    return sMSb + ' ' + sExponent + ' ' + sTruncatedMantissa
+
+def onefFormat(sMantissa, sBase2):
+     # conversion for easy data manipulation
     nBase2 = int(sBase2)
 
     # is it 1.f format?
@@ -111,15 +124,8 @@ def inputBinaryMantissaBase2(sMantissa, sBase2):
             
             sMantissa = "1." + sMantissa[1:]
             nBase2 = nBase2 + nBase2Moves
-
-    return encodeToFloatingFormat(sMSb, sMantissa, sBase2)
-
-def encodeToFloatingFormat(sMSb, sMantissa, sBase2):
     
-    sMantissa, sExponent = encodeExponent(sMantissa, sBase2)
-    sTruncatedMantissa = encodeMantissa(sMantissa)
-    
-    return sMSb + ' ' + sExponent + ' ' + sTruncatedMantissa
+    return sMantissa, str(nBase2)
 
 def encodeExponent(sMantissa, sBase2):
     nBase2 = int(sBase2) + 15
