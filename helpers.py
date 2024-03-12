@@ -1,53 +1,52 @@
 # binary is a string, should strictly contain 16 digits
-def binaryToHex(binary): 
+def binaryToHex(sBinary): 
     
-    nibble = [0, 0, 0, 0]
+    nibbleArray = [0, 0, 0, 0]
     for eachBit in range(0, 16):
         
         nibPos = eachBit % 4
-        nibble[nibPos] = int(binary[eachBit])
+        nibbleArray[nibPos] = int(sBinary[eachBit])
 
         # already at the end of nibble
         if (eachBit % 4 == 3):
-            evaluateNibbleToHex(nibble)
+            evaluateNibbleToHex(nibbleArray)
 
-def evaluateNibbleToHex(nibble):
+def evaluateNibbleToHex(nibbleArray):
 
     # this is just converting binary to decimal
-    totalBinary = 0
-    totalBinary += (nibble[0] * 8)
-    totalBinary += (nibble[1] * 4)
-    totalBinary += (nibble[2] * 2)
-    totalBinary += (nibble[3] * 1)
+    nTotalBinary = 0
+    nTotalBinary += (nibbleArray[0] * 8)
+    nTotalBinary += (nibbleArray[1] * 4)
+    nTotalBinary += (nibbleArray[2] * 2)
+    nTotalBinary += (nibbleArray[3] * 1)
 
-    if(totalBinary > 9):
+    if(nTotalBinary > 9):
 
-        totalBinary %= 10
-        letter = chr(totalBinary + ord('A'))    # using ASCII
-        return letter
+        nTotalBinary %= 10
+        cLetter = chr(nTotalBinary + ord('A'))    # using ASCII
+        return cLetter
 
     else:
-        return totalBinary
+        return nTotalBinary
     
-def convertDecimalToBinary(decimal):
+def convertDecimalToBinary(sDecimal):
     
     # remove 0b
-    sNumberPortion = str(bin(int(decimal.split(".")[0])))[2:]
+    sNumberPortion = str(bin(int(sDecimal.split(".")[0])))[2:]
 
     # we return a string because float cannot handle past 10 decimal digits
-    if("." in decimal):
-        sDecimalPortion = convertDecimalOfDecimalToBinary(decimal.split(".")[1])
+    if("." in sDecimal):
+        sDecimalPortion = convertDecimalOfDecimalToBinary(sDecimal.split(".")[1])
         sFinalBinary = sNumberPortion + "." + sDecimalPortion
         return sFinalBinary
     else:
         return sNumberPortion
         
     
-
-def convertDecimalOfDecimalToBinary(decimal):
+def convertDecimalOfDecimalToBinary(sDecimal):
 
     sFinalBinary = ''
-    fDecimalToMultiply = float("0." + decimal)
+    fDecimalToMultiply = float("0." + sDecimal)
 
     # max 10 mantissa digits
     for x in range(0, 10):
@@ -73,9 +72,12 @@ def convertDecimalOfDecimalToBinary(decimal):
     # return string             
     return sFinalBinary
 
-def inputBinaryMantissaBase2(mantissa, base2):
+def inputBinaryMantissaBase2(sMantissa, sBase2):
+
     pass
 
+
+# currently unused, to be tested later
 def inputDecimalBase10(decimal, base10):
     decimal = float(decimal) * base10 * 10
     convertDecimalToBinary(decimal)
