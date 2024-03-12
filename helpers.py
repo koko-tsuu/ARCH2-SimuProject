@@ -83,7 +83,26 @@ def inputBinaryMantissaBase2(sMantissa, sBase2):
     sMantissa, sBase2 = onefFormat(sMantissa, sBase2)
 
     # if denormalized
+    nBase2 = int(sBase2)
+    if (nBase2 < -15):
+        sMantissa, sBase2 = denormalizedCase(sMantissa, sBase2)
+    
     return encodeToFloatingFormat(sMSb, sMantissa, sBase2)
+
+def denormalizedCase(sMantissa, sBase2):
+    nBase2 = int(sBase2)
+
+    # -1 because of additional zero, because '0.' will be appended
+    nTimesToMove = (abs(nBase2 + 15) - 1)
+
+    sMantissa = sMantissa.replace('.', '')
+
+    for x in range(0, nTimesToMove):
+        sMantissa = '0' + sMantissa
+
+    sMantissa = '0.' + sMantissa
+    
+    return sMantissa, str(-15)
 
 def encodeToFloatingFormat(sMSb, sMantissa, sBase2):
     
