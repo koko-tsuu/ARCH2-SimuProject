@@ -73,8 +73,12 @@ def convertDecimalOfDecimalToBinary(sDecimal):
     return sFinalBinary
 
 def inputBinaryMantissaBase2(sMantissa, sBase2):
+    
+    sMSb = '0'
 
-    # insert code here later if exponent value is beyond the allowed version or less than
+    if (sMantissa[0] == '-'):
+        sMantissa = sMantissa[1:]
+        sMSb = '1'
 
     # conversion for easy data manipulation
     nBase2 = int(sBase2)
@@ -108,7 +112,42 @@ def inputBinaryMantissaBase2(sMantissa, sBase2):
             sMantissa = "1." + sMantissa[1:]
             nBase2 = nBase2 + nBase2Moves
 
-    return sMantissa, str(nBase2)
+    return encodeToFloatingFormat(sMSb, sMantissa, sBase2)
+
+def encodeToFloatingFormat(sMSb, sMantissa, sBase2):
+    
+    sMantissa, sExponent = encodeExponent(sMantissa, sBase2)
+    sTruncatedMantissa = encodeMantissa(sMantissa)
+    
+    return sMSb + ' ' + sExponent + ' ' + sTruncatedMantissa
+
+def encodeExponent(sMantissa, sBase2):
+    nBase2 = int(sBase2) + 15
+    
+    sExponent = str(bin(nBase2))[2:]
+
+    if (sExponent == '11111' or len(sExponent) > 5):
+        sMantissa = '0.0'
+
+    else:
+         while(len(sExponent) < 5):
+             sExponent = '0' + sExponent
+
+    return sMantissa, sExponent
+
+def encodeMantissa(sMantissa):
+
+    # remove "X."
+    sTruncatedMantissa = sMantissa[2:]
+
+    if(len(sTruncatedMantissa) > 10):
+        sTruncatedMantissa = sTruncatedMantissa[0:10]
+    
+    else:
+        while(len(sTruncatedMantissa) < 10):
+            sTruncatedMantissa = sTruncatedMantissa + '0'
+    
+    return sTruncatedMantissa
 
 
 # currently unused, to be tested later

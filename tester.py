@@ -1,10 +1,9 @@
 import helpers
 
 def main():
-
-    sMantissa, sBase2 = helpers.inputBinaryMantissaBase2("0.00001", "9")
-    print(sMantissa)
-    print(sBase2)
+    # need to handle negative (check if '-' at first pos)
+    # bawal floating points ata for exponent?
+    print(helpers.inputBinaryMantissaBase2("-0", "-15"))
 
 
 if __name__ == '__main__':
