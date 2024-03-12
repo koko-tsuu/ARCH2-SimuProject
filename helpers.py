@@ -1,6 +1,8 @@
 # binary is a string, should strictly contain 16 digits
 def binaryToHex(sBinary): 
+    sBinary = sBinary.replace(' ', '')
     
+    sHex = ''
     nibbleArray = [0, 0, 0, 0]
     for eachBit in range(0, 16):
         
@@ -9,7 +11,9 @@ def binaryToHex(sBinary):
 
         # already at the end of nibble
         if (eachBit % 4 == 3):
-            evaluateNibbleToHex(nibbleArray)
+           sHex = sHex + evaluateNibbleToHex(nibbleArray)
+
+    return sHex
 
 def evaluateNibbleToHex(nibbleArray):
 
@@ -27,7 +31,7 @@ def evaluateNibbleToHex(nibbleArray):
         return cLetter
 
     else:
-        return nTotalBinary
+        return str(nTotalBinary)
     
 def convertDecimalToBinary(sDecimal):
     
