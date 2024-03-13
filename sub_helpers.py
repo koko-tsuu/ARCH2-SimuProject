@@ -95,3 +95,56 @@ def onefFormat(sMantissa, sBase2):
             nBase2 = nBase2 + nBase2Moves
     
     return sMantissa, str(nBase2)
+
+
+# floating points are finicky so we'll do it manually
+def base10Move(sDecimal, sBase10):
+
+    nBase10 = int(sBase10)
+     
+    if(not("." in sDecimal)):
+        sDecimal = sDecimal + '.'
+        
+    # move to right
+    # consider if we don't have any numbers after
+    if (nBase10 > 0):
+        
+        while(nBase10 != 0):
+
+            # example: 2.01
+            #          2(0)1
+            nDecimalPointIndex = sDecimal.index('.') 
+
+            sDecimal = sDecimal.replace('.', '')
+            nLastDigitIndex = len(sDecimal) - 1
+            
+            # need to append a zero
+            if (nLastDigitIndex == (nDecimalPointIndex-1)):
+                sDecimal = sDecimal[0:] + '0.'
+
+            else:
+                sDecimal = sDecimal[0:nDecimalPointIndex+1] + '.' + sDecimal[nDecimalPointIndex+1:]
+                
+            nBase10 -= 1
+
+    # move to left: not done
+    elif (nBase10 < 0):
+         while(nBase10 != 0):
+
+            nDecimalPointIndex = sDecimal.index('.')
+            sDecimal = sDecimal.replace('.', '')
+
+            # need to append a zero
+            # case: X.XXXXX
+            if (nDecimalPointIndex == 1):
+                 sDecimal = "0." + sDecimal
+            
+            else:
+                sDecimal = sDecimal[0:nDecimalPointIndex-1] + '.' + sDecimal[nDecimalPointIndex-1:]
+
+            nBase10 += 1
+            
+
+    
+    return sDecimal
+    
