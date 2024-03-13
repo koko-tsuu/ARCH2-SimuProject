@@ -1,20 +1,3 @@
-# binary is a string, should strictly contain 16 digits
-def binaryToHex(sBinary): 
-    sBinary = sBinary.replace(' ', '')
-    
-    sHex = ''
-    nibbleArray = [0, 0, 0, 0]
-    for eachBit in range(0, 16):
-        
-        nibPos = eachBit % 4
-        nibbleArray[nibPos] = int(sBinary[eachBit])
-
-        # already at the end of nibble
-        if (eachBit % 4 == 3):
-           sHex = sHex + evaluateNibbleToHex(nibbleArray)
-
-    return sHex
-
 def evaluateNibbleToHex(nibbleArray):
 
     # this is just converting binary to decimal
@@ -32,20 +15,6 @@ def evaluateNibbleToHex(nibbleArray):
 
     else:
         return str(nTotalBinary)
-    
-def convertDecimalToBinary(sDecimal):
-    
-    # remove 0b
-    sNumberPortion = str(bin(int(sDecimal.split(".")[0])))[2:]
-
-    # we return a string because float cannot handle past a couple # of digits
-    if("." in sDecimal):
-        sDecimalPortion = convertDecimalOfDecimalToBinary(sDecimal.split(".")[1])
-        sFinalBinary = sNumberPortion + "." + sDecimalPortion
-        return sFinalBinary
-    else:
-        return sNumberPortion
-        
     
 def convertDecimalOfDecimalToBinary(sDecimal):
 
@@ -76,23 +45,6 @@ def convertDecimalOfDecimalToBinary(sDecimal):
     # return string             
     return sFinalBinary
 
-def inputBinaryMantissaBase2(sMantissa, sBase2):
-    
-    sMSb = '0'
-
-    if (sMantissa[0] == '-'):
-        sMantissa = sMantissa[1:]
-        sMSb = '1'
-
-    sMantissa, sBase2 = onefFormat(sMantissa, sBase2)
-
-    # if denormalized
-    nBase2 = int(sBase2)
-    if (nBase2 < -15):
-        sMantissa, sBase2 = denormalizedCase(sMantissa, sBase2)
-    
-    return encodeToFloatingFormat(sMSb, sMantissa, sBase2)
-
 def denormalizedCase(sMantissa, sBase2):
     nBase2 = int(sBase2)
 
@@ -108,12 +60,6 @@ def denormalizedCase(sMantissa, sBase2):
     
     return sMantissa, str(-15)
 
-def encodeToFloatingFormat(sMSb, sMantissa, sBase2):
-    
-    sMantissa, sExponent = encodeExponent(sMantissa, sBase2)
-    sTruncatedMantissa = encodeMantissa(sMantissa)
-    
-    return sMSb + ' ' + sExponent + ' ' + sTruncatedMantissa
 
 def onefFormat(sMantissa, sBase2):
      # conversion for easy data manipulation
@@ -149,37 +95,3 @@ def onefFormat(sMantissa, sBase2):
             nBase2 = nBase2 + nBase2Moves
     
     return sMantissa, str(nBase2)
-
-def encodeExponent(sMantissa, sBase2):
-    nBase2 = int(sBase2) + 15
-    
-    sExponent = str(bin(nBase2))[2:]
-
-    if (sExponent == '11111' or len(sExponent) > 5):
-        sMantissa = '0.0'
-
-    else:
-         while(len(sExponent) < 5):
-             sExponent = '0' + sExponent
-
-    return sMantissa, sExponent
-
-def encodeMantissa(sMantissa):
-
-    # remove "X."
-    sTruncatedMantissa = sMantissa[2:]
-
-    if(len(sTruncatedMantissa) > 10):
-        sTruncatedMantissa = sTruncatedMantissa[0:10]
-    
-    else:
-        while(len(sTruncatedMantissa) < 10):
-            sTruncatedMantissa = sTruncatedMantissa + '0'
-    
-    return sTruncatedMantissa
-
-def inputDecimalBase10(decimal, base10):
-    fDecimal = float(decimal) * int(base10) * 10
-    sBinary = convertDecimalToBinary(str(fDecimal))
-
-    return inputBinaryMantissaBase2(sBinary, 0)
