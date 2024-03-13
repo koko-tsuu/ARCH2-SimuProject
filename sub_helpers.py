@@ -143,8 +143,19 @@ def base10Move(sDecimal, sBase10):
                 sDecimal = sDecimal[0:nDecimalPointIndex-1] + '.' + sDecimal[nDecimalPointIndex-1:]
 
             nBase10 += 1
-            
-
     
     return sDecimal
     
+def convertDecimalToBinary(sDecimal):
+    
+    # bin appends 0b at the start
+    sNumberPortion = str(bin(int(sDecimal.split(".")[0])))[2:]
+
+    # we return a string because float cannot handle past a couple # of digits
+    if("." in sDecimal):
+        sDecimalPortion = convertDecimalOfDecimalToBinary(sDecimal.split(".")[1])
+        sFinalBinary = sNumberPortion + "." + sDecimalPortion
+        return sFinalBinary
+    
+    else:
+        return sNumberPortion

@@ -23,19 +23,6 @@ def binaryToHex(sBinary):
 
     return sHex
 
-def convertDecimalToBinary(sDecimal):
-    
-    # bin appends 0b at the start
-    sNumberPortion = str(bin(int(sDecimal.split(".")[0])))[2:]
-
-    # we return a string because float cannot handle past a couple # of digits
-    if("." in sDecimal):
-        sDecimalPortion = sub_helpers.convertDecimalOfDecimalToBinary(sDecimal.split(".")[1])
-        sFinalBinary = sNumberPortion + "." + sDecimalPortion
-        return sFinalBinary
-    
-    else:
-        return sNumberPortion
         
 def inputBinaryMantissaBase2(sMantissa, sBase2):
     
@@ -58,11 +45,11 @@ def inputDecimalBase10(sDecimal, sBase10):
     if (sDecimal[0] == '-'):
         sDecimal = sDecimal[1:]
         sDecimal = sub_helpers.base10Move(sDecimal, sBase10)
-        sBinary = convertDecimalToBinary(sDecimal)
+        sBinary = sub_helpers.convertDecimalToBinary(sDecimal)
         sBinary = '-' + sBinary
     
     else:
         sDecimal = sub_helpers.base10Move(sDecimal, sBase10)
-        sBinary = convertDecimalToBinary(sDecimal)
+        sBinary = sub_helpers.convertDecimalToBinary(sDecimal)
 
     return inputBinaryMantissaBase2(sBinary, 0)
