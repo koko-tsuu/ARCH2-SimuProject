@@ -159,3 +159,63 @@ def convertDecimalToBinary(sDecimal):
     
     else:
         return sNumberPortion
+
+def inputValidationBase2(sMantissa, sBase2):
+
+    nDotCounter = 0
+
+    if (sMantissa == 'sNaN' or sMantissa == 'qNaN' or sMantissa == 'snan' or sMantissa == 'qnan'):
+        return True
+
+    if (sMantissa[0] == '-'):
+        sMantissa = sMantissa[1:]
+
+    if (sBase2[0] == '-'):
+        sBase2 = sBase2[1:]
+    
+    
+    for x in sMantissa:
+        if (x == '.' and nDotCounter == 0):
+            nDotCounter+=1
+
+        elif (x != 0 and x != 1):
+            return False
+    
+    try:
+        for x in sBase2:
+            int(x)
+    except:
+        return False
+    
+    return True
+
+
+def inputValidationBase10(sDecimal, sBase10):
+
+    nDotCounter = 0
+
+    if (sDecimal == 'sNaN' or sDecimal == 'qNaN' or sDecimal == 'snan' or sDecimal == 'qnan'):
+        return True
+
+    if (sDecimal[0] == '-'):
+        sDecimal = sDecimal[1:]
+
+    if (sBase10[0] == '-'):
+        sBase10 = sBase10[1:]
+    
+    try:
+        for x in sDecimal:
+            if (x == '.' and nDotCounter == 0):
+                nDotCounter+=1
+            else:
+                int(x)
+    except:
+        return False
+    
+    try:
+        for x in sBase10:
+            int(x)
+    except:
+        return False
+    
+    return True
