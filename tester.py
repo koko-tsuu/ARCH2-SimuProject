@@ -15,7 +15,7 @@ def calc():
         exp = request.form['exp']
 
         sBinary = main_helpers.inputDecimalBase10(bmantissa, exp)
-        return redirect(url_for('index'), code=307)
+        return redirect(url_for('index', result=sBinary))
 
 if __name__ == '__main__':
     # need to handle negative (check if '-' at first pos)
