@@ -174,7 +174,6 @@ def inputValidationBase2(sMantissa, sBase2):
         sBase2 = sBase2[1:]
     
     for x in sMantissa:
-        print(x)
         if (x == '.' and nDotCounter == 0):
             nDotCounter+=1
 
