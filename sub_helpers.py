@@ -161,7 +161,7 @@ def convertDecimalToBinary(sDecimal):
         return sNumberPortion
 
 def inputValidationBase2(sMantissa, sBase2):
-
+    sBase2 = str(sBase2)
     nDotCounter = 0
 
     if (sMantissa == 'sNaN' or sMantissa == 'qNaN' or sMantissa == 'snan' or sMantissa == 'qnan'):
@@ -173,12 +173,12 @@ def inputValidationBase2(sMantissa, sBase2):
     if (sBase2[0] == '-'):
         sBase2 = sBase2[1:]
     
-    
     for x in sMantissa:
+        print(x)
         if (x == '.' and nDotCounter == 0):
             nDotCounter+=1
 
-        elif (x != 0 and x != 1):
+        elif (x != '0' and x != '1'):
             return False
     
     try:
@@ -191,7 +191,7 @@ def inputValidationBase2(sMantissa, sBase2):
 
 
 def inputValidationBase10(sDecimal, sBase10):
-
+    sBase10 = str(sBase10)
     nDotCounter = 0
 
     if (sDecimal == 'sNaN' or sDecimal == 'qNaN' or sDecimal == 'snan' or sDecimal == 'qnan'):

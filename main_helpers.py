@@ -48,26 +48,25 @@ def inputBinaryMantissaBase2(sMantissa, sBase2):
         return '0 11111 0100000000'
 
 def inputDecimalBase10(sDecimal, sBase10):
-    if (sDecimal[0] == '-'):
-        sDecimal = sDecimal[1:]
-        
-        if (sub_helpers.inputValidationBase10(sDecimal, sBase10)):
-
-            if(sDecimal == 'sNaN' or sDecimal == 'snan'):
+    if (sub_helpers.inputValidationBase10(sDecimal, sBase10)):
+        if(sDecimal == 'sNaN' or sDecimal == 'snan'):
                 return '0 11111 0100000000'
             
-            elif (sDecimal == 'qNaN' or sDecimal == 'qnan'):
+        elif (sDecimal == 'qNaN' or sDecimal == 'qnan'):
                 return '0 11111 1000000000'
-            
+         
+        if (sDecimal[0] == '-'):
+            sDecimal = sDecimal[1:]
+                
             sDecimal = sub_helpers.base10Move(sDecimal, sBase10)
             sBinary = sub_helpers.convertDecimalToBinary(sDecimal)
             sBinary = '-' + sBinary
-            
-        else: 
+        
+        else:
+            sDecimal = sub_helpers.base10Move(sDecimal, sBase10)
+            sBinary = sub_helpers.convertDecimalToBinary(sDecimal)
+        
+    else: 
             return '0 11111 0100000000'
-    
-    else:
-        sDecimal = sub_helpers.base10Move(sDecimal, sBase10)
-        sBinary = sub_helpers.convertDecimalToBinary(sDecimal)
 
     return inputBinaryMantissaBase2(sBinary, 0)
