@@ -1,5 +1,4 @@
 # call these helpers, they'll call other methods from mini_helpers
-import random
 import sub_helpers
 import encoders
 
