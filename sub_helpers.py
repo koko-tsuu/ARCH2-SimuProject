@@ -20,10 +20,11 @@ def convertDecimalOfDecimalToBinary(sDecimal):
 
     sFinalBinary = ''
     fDecimalToMultiply = float("0." + sDecimal)
-
+    
     # max 10 mantissa digits
-    for x in range(0, 10):
+    x = 0
 
+    while (x <= 10):
         # not 0.000
         if (fDecimalToMultiply != 0):
            
@@ -32,6 +33,10 @@ def convertDecimalOfDecimalToBinary(sDecimal):
 
             # get MSb (x).xxx
             cMSb = str(fDecimalToMultiply)[0]
+            if (x == 0):
+                x = x + int(cMSb)
+            else:
+                x = x + 1
 
             # replace MSb to 0
             sZeroDotDecimal = '0' + str(fDecimalToMultiply)[1:]
