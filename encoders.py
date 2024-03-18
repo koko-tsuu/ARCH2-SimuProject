@@ -12,6 +12,7 @@ def encodeExponent(sMantissa, sBase2):
 
     if (sExponent == '11111' or len(sExponent) > 5):
         sMantissa = '0.0'
+        sExponent = '11111'
 
     else:
          while(len(sExponent) < 5):
