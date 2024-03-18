@@ -46,8 +46,10 @@ def convertDecimalOfDecimalToBinary(sDecimal):
 
             # append to string
             sFinalBinary = sFinalBinary + cMSb
+        else:
+            x = x + 1
 
-    # return string             
+    # return string         
     return sFinalBinary
 
 def denormalizedCase(sMantissa, sBase2):
