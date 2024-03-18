@@ -6,7 +6,8 @@ app = Flask(__name__)
 @app.route("/", methods=['POST', 'GET'])
 def index():
     res="" if request.args.get('result') is None else request.args.get('result')
-    return render_template('index.html', result=res)
+    hex="" if request.args.get('hex') is None else request.args.get('hex')
+    return render_template('index.html', result=res, hex=hex)
 
 @app.route("/submit", methods=['POST'])
 def calc():
@@ -15,7 +16,8 @@ def calc():
         exp = request.form['exp']
 
         sBinary = main_helpers.inputDecimalBase10(bmantissa, exp)
-        return redirect(url_for('index', result=sBinary))
+        sHex = main_helpers.binaryToHex(sBinary)
+        return redirect(url_for('index', result=sBinary, hex=sHex))
 
 if __name__ == '__main__':
     # need to handle negative (check if '-' at first pos)
