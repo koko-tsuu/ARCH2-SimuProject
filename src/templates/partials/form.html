@@ -25,10 +25,12 @@
 
         <div class="mx-auto text-center">
             <form method="GET" action="/save">
-                {% if pChk != '10' or pChk != '2' %}
-                <button type="submit" id="downloadBtn" class="btn btn-warning mx-auto disabled">Export to File</button>
+                {% if request.args.get('pChk') is not none %}
+                    {% if pChk == '10' or pChk == '2' %}
+                    <button type="submit" id="downloadBtn" class="btn btn-warning mx-auto">Export to File</button>
+                    {% endif %}
                 {% else %}
-                <button type="submit" id="downloadBtn" class="btn btn-warning mx-auto enabled">Export to File</button>
+                    <button type="submit" id="downloadBtn" class="btn btn-warning mx-auto disabled">Export to File</button>
                 {% endif %}
             </form>
         </div>
