@@ -6,30 +6,37 @@ def encodeToFloatingFormat(sMSb, sMantissa, sBase2):
     return sMSb + ' ' + sExponent + ' ' + sTruncatedMantissa
 
 def encodeExponent(sMantissa, sBase2):
-    nBase2 = int(sBase2) + 15
-    
-    sExponent = str(bin(nBase2))[2:]
+    if (sMantissa != '0.0'):
+        nBase2 = int(sBase2) + 15
+        
+        sExponent = str(bin(nBase2))[2:]
 
-    if (sExponent == '11111' or len(sExponent) > 5):
-        sMantissa = '0.0'
-        sExponent = '11111'
+        if (sExponent == '11111' or len(sExponent) > 5):
+            sMantissa = '0.0'
+            sExponent = '11111'
 
+        else:
+            while(len(sExponent) < 5):
+                sExponent = '0' + sExponent
+
+        return sMantissa, sExponent
     else:
-         while(len(sExponent) < 5):
-             sExponent = '0' + sExponent
-
-    return sMantissa, sExponent
+        return sMantissa, "00000"
 
 def encodeMantissa(sMantissa):
 
     # remove "X."
     sTruncatedMantissa = sMantissa[2:]
 
-    if(len(sTruncatedMantissa) > 10):
-        sTruncatedMantissa = sTruncatedMantissa[0:10]
+    if(sTruncatedMantissa != '0'):
+
+        if(len(sTruncatedMantissa) > 10):
+            sTruncatedMantissa = sTruncatedMantissa[0:10]
+        
+        else:
+            while(len(sTruncatedMantissa) < 10):
+                sTruncatedMantissa = sTruncatedMantissa + '0'
     
+        return sTruncatedMantissa
     else:
-        while(len(sTruncatedMantissa) < 10):
-            sTruncatedMantissa = sTruncatedMantissa + '0'
-    
-    return sTruncatedMantissa
+        return "0000000000"

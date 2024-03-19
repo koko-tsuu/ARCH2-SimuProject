@@ -83,7 +83,7 @@ def onefFormat(sMantissa, sBase2):
                     # minus 1 because decimal point was included in finding index
                     nBase2 -= (n1Index - 1)
                 else:
-                    return "0.0", str(nBase2)
+                    return "0.0", '0'
 
             else:    
                 # we need to move it manually using strings

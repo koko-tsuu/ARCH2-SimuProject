@@ -35,7 +35,7 @@ def calc():
         sHex = main_helpers.binaryToHex(sBinary)
         #hold = [sBinary, sHex, bMantissa, bExp, bBased]
 
-        with open('./static/uploads/out.txt', 'w') as f:
+        with open('static/uploads/out.txt', 'w') as f:
             f.write(f'Input: {bMantissa} x {bChk}^{bExp}\n\n')
             f.write(f'Hex: 0x{sHex}\n')
             f.write(f'Bin: {sBinary}\n')
