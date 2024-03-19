@@ -56,7 +56,7 @@ def denormalizedCase(sMantissa, sBase2):
     nBase2 = int(sBase2)
 
     # -1 because of additional zero, because '0.' will be appended
-    nTimesToMove = (abs(nBase2 + 15) - 1)
+    nTimesToMove = (abs(nBase2 + 14) - 1)
 
     sMantissa = sMantissa.replace('.', '')
 
@@ -65,8 +65,7 @@ def denormalizedCase(sMantissa, sBase2):
 
     sMantissa = '0.' + sMantissa
     
-    return sMantissa, str(-15)
-
+    return sMantissa, str(0)
 
 def onefFormat(sMantissa, sBase2):
      # conversion for easy data manipulation
