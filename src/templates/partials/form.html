@@ -1,0 +1,36 @@
+<div class="d-flex flex-column">
+    <div class="p-2">
+        <form method="POST" action="/submit">
+            <div class="mb-3">
+                <label for="bmantissa" class="form-label">Mantissa</label>
+                <input type="number" step="any" class="form-control" name="inmantissa" id="inmantissa" required>
+            </div>
+            <div class="mb-3">
+                <label for="exp" class="form-label">Exponent</label>
+                <input type="number" min="-14" max="32767" class="form-control" name="exp" id="exp" required>
+                <div class="form-check form-switch mt-3">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked name="based">
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Enable Base-10 (default: on)</label>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <div class="p-2">
+        <h3>Result: </h3>
+        
+        <p class="text-center custom-weight">{{ pMan }} x {{ pChk }}<sup>{{ pExp }}</sup> = 0x{{ bHex }} = {{ result }} </p>
+
+        <div class="mx-auto text-center">
+            <form method="GET" action="/save">
+                {% if pChk != '10' or pChk != '2' %}
+                <button type="submit" id="downloadBtn" class="btn btn-warning mx-auto disabled">Export to File</button>
+                {% else %}
+                <button type="submit" id="downloadBtn" class="btn btn-warning mx-auto enabled">Export to File</button>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+@media (min-width: 576px) {
+  .xs {
+    width: 40%;
+  }
+}
+
+.custom-weight { font-weight: bold; font-size: 1.5em; }
