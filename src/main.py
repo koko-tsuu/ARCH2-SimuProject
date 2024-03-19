@@ -6,9 +6,6 @@ app = Flask(__name__)
 
 @app.route("/", methods=['POST', 'GET'])
 def index():
-    with open("static/uploads/out.txt", "w") as f:
-        f.write("")
-        
     res='_ _____ __________' if request.args.get('result') is None else request.args.get('result')
     hex='____' if request.args.get('bHex') is None else request.args.get('bHex')
     man = '_' if request.args.get('pMan') is None else request.args.get('pMan')
