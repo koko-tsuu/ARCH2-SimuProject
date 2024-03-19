@@ -76,12 +76,14 @@ def onefFormat(sMantissa, sBase2):
     if (sMantissa[0:2] != '1.'):
         if("." in sMantissa):
             if(sMantissa[0:2] == '0.'):
-
-                n1Index = sMantissa.index('1')
-                sMantissa = '1.' + sMantissa[n1Index+1:]
-                
-                # minus 1 because decimal point was included in finding index
-                nBase2 -= (n1Index - 1)
+                if("1" in sMantissa):
+                    n1Index = sMantissa.index('1')
+                    sMantissa = '1.' + sMantissa[n1Index+1:]
+                    
+                    # minus 1 because decimal point was included in finding index
+                    nBase2 -= (n1Index - 1)
+                else:
+                    return "0.0", str(nBase2)
 
             else:    
                 # we need to move it manually using strings
