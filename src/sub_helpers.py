@@ -96,11 +96,14 @@ def onefFormat(sMantissa, sBase2):
 
                 nBase2 = nBase2 + nBase2Moves
         else:
-            # -1 because we don't move the decimal point beyond MSb
-            nBase2Moves = len(sMantissa) - 1
-            
-            sMantissa = "1." + sMantissa[1:]
-            nBase2 = nBase2 + nBase2Moves
+            if("1" in sMantissa):
+                # -1 because we don't move the decimal point beyond MSb
+                nBase2Moves = len(sMantissa) - 1
+                
+                sMantissa = "1." + sMantissa[1:]
+                nBase2 = nBase2 + nBase2Moves
+            else:
+                  return "0.0", '0'
     
     return sMantissa, str(nBase2)
 
