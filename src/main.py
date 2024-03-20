@@ -35,7 +35,7 @@ def calc():
         sHex = main_helpers.binaryToHex(sBinary)
         #hold = [sBinary, sHex, bMantissa, bExp, bBased]
 
-        with open('static/uploads/out.txt', 'w') as f:
+        with open('uploads/out.txt', 'w') as f:
             f.write(f'Input: {bMantissa} x {bChk}^{bExp}\n\n')
             f.write(f'Hex: 0x{sHex}\n')
             f.write(f'Bin: {sBinary}\n')
@@ -44,7 +44,7 @@ def calc():
 
 @app.route("/save", methods=['GET'])
 def save():
-    return send_file('static/uploads/out.txt', as_attachment=True)
+    return send_file('../uploads/out.txt', as_attachment=True)
         
 
 if __name__ == '__main__':
@@ -52,24 +52,3 @@ if __name__ == '__main__':
     # bawal floating points ata for exponent?
     app.run(port=5000, debug=True)
     
-
-"""
-def entry_page():
-    if request.method == 'POST':
-        date = request.form['date']
-        title = request.form['blog_title']
-        post = request.form['blog_main']
-        post_entry = models.BlogPost(date = date, title = title, post = post)
-        db.session.add(post_entry)
-        db.session.commit()
-        return redirect(url_for('database'))
-    else:
-        return render_template('entry.html')
-
-@app.route('/database')        
-def database():
-    query = []
-    for i in session.query(models.BlogPost):
-        query.append((i.title, i.post, i.date))
-    return render_template('database.html', query = query)
-"""
