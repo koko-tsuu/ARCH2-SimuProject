@@ -7,3 +7,9 @@
 #### Martinez, Francis Benedict
 #### Tan, Colleen Julianna
 #### Uy, Orrin Landon
+
+
+## To run
+
+1. Open start_server.bat
+2. Open localhost:5000
