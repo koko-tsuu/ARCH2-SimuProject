@@ -146,7 +146,8 @@ def convertDecimalOfDecimalToBinary(sDecimal):
 
     while (x <= 30):
         # not 0.000
-        if (sDecimalToMultiply != '0.0'):
+        if (sDecimalToMultiply != '0.0' and sDecimalToMultiply != '0.'):
+
             # multiply by 2
             sDecimalToMultiply = multiplicationDecimal(sDecimalToMultiply)
 
