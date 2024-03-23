@@ -14,7 +14,7 @@ def binaryToHex(sBinary):
     for eachBit in range(0, 16):
         
         nNibPos = eachBit % 4
-        nibbleArray[nNibPos] = int(sBinary[eachBit])
+        nibbleArray[nNibPos] = sub_helpers.to_int(sBinary[eachBit])
 
         # already at the end of nibble
         if (eachBit % 4 == 3):
@@ -39,7 +39,7 @@ def inputBinaryMantissaBase2(sMantissa, sBase2):
             sMantissa, sBase2 = sub_helpers.onefFormat(sMantissa, sBase2)
 
             # if denormalized
-            nBase2 = int(sBase2)
+            nBase2 = sub_helpers.to_int(sBase2)
             if (nBase2 < -15):
                 sMantissa, sBase2 = sub_helpers.denormalizedCase(sMantissa, sBase2)
             
@@ -49,7 +49,6 @@ def inputBinaryMantissaBase2(sMantissa, sBase2):
 
 def inputDecimalBase10(sDecimal, sBase10):
     if (sub_helpers.inputValidationBase10(sDecimal, sBase10)):
-        print (sDecimal)
         if(sDecimal.lower() == 'snan'):
                 return '0 11111 0100000000'
             

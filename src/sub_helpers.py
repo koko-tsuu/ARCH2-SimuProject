@@ -24,7 +24,7 @@ def convertDecimalOfDecimalToBinary(sDecimal):
     # max 10 mantissa digits
     x = 0
 
-    while (x <= 10):
+    while (x <= 20):
         # not 0.000
         if (fDecimalToMultiply != 0):
            
@@ -34,7 +34,7 @@ def convertDecimalOfDecimalToBinary(sDecimal):
             # get MSb (x).xxx
             cMSb = str(fDecimalToMultiply)[0]
             if (x == 0):
-                x = x + int(cMSb)
+                x = x + to_int(cMSb)
             else:
                 x = x + 1
 
@@ -53,7 +53,7 @@ def convertDecimalOfDecimalToBinary(sDecimal):
     return sFinalBinary
 
 def denormalizedCase(sMantissa, sBase2):
-    nBase2 = int(sBase2)
+    nBase2 = to_int(sBase2)
 
     # -1 because of additional zero, because '0.' will be appended
     nTimesToMove = (abs(nBase2 + 15) - 1)
@@ -69,7 +69,7 @@ def denormalizedCase(sMantissa, sBase2):
 
 def onefFormat(sMantissa, sBase2):
      # conversion for easy data manipulation
-    nBase2 = int(sBase2)
+    nBase2 = to_int(sBase2)
 
     # is it 1.f format?
     if (sMantissa[0:2] != '1.'):
@@ -111,7 +111,7 @@ def onefFormat(sMantissa, sBase2):
 # floating points are finicky so we'll do it manually
 def base10Move(sDecimal, sBase10):
 
-    nBase10 = int(sBase10)
+    nBase10 = to_int(sBase10)
      
     if(not("." in sDecimal)):
         sDecimal = sDecimal + '.'
@@ -160,7 +160,7 @@ def base10Move(sDecimal, sBase10):
 def convertDecimalToBinary(sDecimal):
     
     # bin appends 0b at the start
-    sNumberPortion = str(bin(int(sDecimal.split(".")[0])))[2:]
+    sNumberPortion = str(bin(to_int(sDecimal.split(".")[0])))[2:]
 
     # we return a string because float cannot handle past a couple # of digits
     if("." in sDecimal):
@@ -193,7 +193,7 @@ def inputValidationBase2(sMantissa, sBase2):
     
     try:
         for x in sBase2:
-            int(x)
+            to_int(x)
     except:
         return False
     
@@ -218,14 +218,40 @@ def inputValidationBase10(sDecimal, sBase10):
             if (x == '.' and nDotCounter == 0):
                 nDotCounter+=1
             else:
-                int(x)
+                to_int(x)
     except:
         return False
     
     try:
         for x in sBase10:
-            int(x)
+            to_int(x)
     except:
         return False
     
     return True
+
+def to_int(sNumber):
+  
+    nFinalNumber = 0
+
+    if('.' in sNumber):
+        nIndex = sNumber.index('.')
+        nSecondIncrementor = 0
+
+        # first half
+        for x in range(nIndex, 0, -1):
+            nTensCounter = pow(10, x-1)
+            nFinalNumber = nFinalNumber + (nTensCounter * int(sNumber[nSecondIncrementor]))
+            nSecondIncrementor+=1
+
+        for x in range(nIndex+1, len(sNumber), 1):
+            nTensCounter = pow(10, (nIndex-x))
+            nFinalNumber = nFinalNumber + (nTensCounter * int(sNumber[x]))
+
+        
+    else:
+        for x in range((len(sNumber)-1), -1, -1):
+            nTensCounter = pow(10, len(sNumber) - 1 - x)
+            nFinalNumber = nFinalNumber + (nTensCounter * int(sNumber[x]))
+
+    return nFinalNumber
