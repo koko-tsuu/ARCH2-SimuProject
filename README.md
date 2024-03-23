@@ -22,7 +22,9 @@ If that doesn't work, please run the python script from the parent directory lik
 `py src/main.py`, and then access from your browser
 
 
-### Test Cases (Screenshots and video demo can be found in "testcases" folder)
+### Test Cases 
+- (Screenshots and video demo can also be found in the "testcases" folder)
+- Short video: https://youtu.be/mMTbna9AgHQ
 #### Special Cases
 
 
