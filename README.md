@@ -8,8 +8,9 @@
 #### Tan, Colleen Julianna
 #### Uy, Orrin Landon
 
+## (Screenshots and video demo can be found in "testcases" folder)
 
 ## To run
 
 1. Open start_server.bat
-2. Open localhost:5000
+2. Open localhost:5000 in browser
