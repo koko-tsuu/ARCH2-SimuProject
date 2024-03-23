@@ -231,8 +231,14 @@ def inputValidationBase10(sDecimal, sBase10):
     return True
 
 def to_int(sNumber):
-  
+
+    nSign = 1
     sNumber = str(sNumber)
+
+    if (sNumber[0] == '-'):
+        nSign = -1
+        sNumber = sNumber[1:]
+
     nFinalNumber = 0
 
     if('.' in sNumber):
@@ -255,7 +261,7 @@ def to_int(sNumber):
             nTensCounter = pow(10, len(sNumber) - 1 - x)
             nFinalNumber = nFinalNumber + (nTensCounter * int(sNumber[x]))
 
-    return nFinalNumber
+    return nFinalNumber * nSign
 
 def toRoundUp(sTruncatedMantissa):
     LsbIsEven = (sTruncatedMantissa[9] == '0')
