@@ -22,6 +22,8 @@ If that doesn't work, please run the python script from the parent directory lik
 
 
 ### (Screenshots and video demo can be found in "testcases" folder)
+![alt text](./testcases/csarch2asinput(BIN).png?raw=true)
+
 
 ## Project Experience
 - This project was made using Python w/ Flask, HTML, Bootstrap 5, and JINJA
