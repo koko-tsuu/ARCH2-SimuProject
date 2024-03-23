@@ -24,7 +24,7 @@ def convertDecimalOfDecimalToBinary(sDecimal):
     # max 10 mantissa digits
     x = 0
 
-    while (x <= 20):
+    while (x <= 30):
         # not 0.000
         if (fDecimalToMultiply != 0):
            
@@ -232,6 +232,7 @@ def inputValidationBase10(sDecimal, sBase10):
 
 def to_int(sNumber):
   
+    sNumber = str(sNumber)
     nFinalNumber = 0
 
     if('.' in sNumber):
