@@ -41,7 +41,7 @@ def encodeMantissa(sMantissa):
         else:
             while(len(sTruncatedMantissa) < 10):
                 sTruncatedMantissa = sTruncatedMantissa + '0'
-                return sTruncatedMantissa
+            return sTruncatedMantissa
     else:
         return "0000000000"
     

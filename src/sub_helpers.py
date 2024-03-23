@@ -55,8 +55,8 @@ def convertDecimalOfDecimalToBinary(sDecimal):
 def denormalizedCase(sMantissa, sBase2):
     nBase2 = to_int(sBase2)
 
-    # -1 because of additional zero, because '0.' will be appended
-    nTimesToMove = (abs(nBase2 + 15) - 1)
+    # -14 is the min
+    nTimesToMove = (abs(nBase2 + 14))
 
     sMantissa = sMantissa.replace('.', '')
 
@@ -282,7 +282,6 @@ def toRoundUp(sTruncatedMantissa):
             elif (sRoundToEven[x] == '0' and x == (len(sRoundToEven)-1)):
                 if (LsbIsEven):
                     toRound = False
-    print(toRound)
     return toRound
 
 def handleCarryOver(sTruncatedMantissa):

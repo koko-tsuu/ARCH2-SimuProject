@@ -40,9 +40,9 @@ def inputBinaryMantissaBase2(sMantissa, sBase2):
 
             # if denormalized
             nBase2 = sub_helpers.to_int(sBase2)
-            if (nBase2 < -15):
+            if (nBase2 < -14):
                 sMantissa, sBase2 = sub_helpers.denormalizedCase(sMantissa, sBase2)
-            
+      
             return encoders.encodeToFloatingFormat(sMSb, sMantissa, sBase2)
     else:
         return '0 11111 0100000000'
