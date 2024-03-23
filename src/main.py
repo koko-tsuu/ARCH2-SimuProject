@@ -41,16 +41,22 @@ def calc():
             msg = "Denormalized Number"
         elif sHex == "0001":
             msg = "Smallest Positive Denormalized Number"
+        elif sHex == "8001":
+            msg = "Smallest Negative Denormalized Number"
         elif sHex == "03FF":
             msg = "Largest Denormalized Number"
         elif sHex == "0400":
             msg = "Smallest Positive Normalized Number"
+        elif sHex == "8400":
+            msg = "Smallest Negative Normalized Number"
         elif sHex == "3BFF":
             msg = "Largest Number less than One"
         elif sHex == "3C01":
             msg = "Smallest Number larger than One"
         elif sHex == "7BFF":
             msg = "Largest Normal Number"
+        elif sHex == "FBFF":
+            msg = "Largest Negative Normal Number"
         elif sHex == "8000":
             msg = "Negative Zero"
         elif sHex == "0000":
