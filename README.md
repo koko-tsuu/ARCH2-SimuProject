@@ -43,6 +43,8 @@ If that doesn't work, please run the python script from the parent directory lik
 #### On the topic of binary conversion with decimal numbers
 - bin() cannot convert float or decimal, so the convertDecimalOfDecimalToBinary function was needed to manually convert decimal numbers (ex. 0.5). 
 
+#### On the topic of Web Servers
+- There's a delay between the server writing and downloading which means if you immediately pressed download while the server isn't done writing, you'll download an outdated file
 
 #### Prepared by:
 - Alog, Lorenz Wilson
