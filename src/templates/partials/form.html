@@ -24,9 +24,9 @@
         <p class="text-center custom-weight"><u>{{ pMan }} x {{ pChk }}</u><sup>{{ pExp }}</sup> = 0x{{ bHex }}<br> = {{ result }}</p>
         <p class="text-center custom-weight">{{ pMsg }}</p>
 
-        {% if result != '  '%}
+        {% if result != '_ _____ __________' %}
         <div class="container px-4 m-3 text-center">
-            {% if results|length >= 18%}
+            {% if result|length >= 18%}
             <div class="row gx-1">
                 <div class="col-sm-1">Sign</div>
                 <div class="col-sm-4">Exponent</div>
