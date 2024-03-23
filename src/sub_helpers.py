@@ -16,47 +16,12 @@ def evaluateNibbleToHex(nibbleArray):
     else:
         return str(nTotalBinary)
     
-def convertDecimalOfDecimalToBinary(sDecimal):
-
-    sFinalBinary = ''
-    fDecimalToMultiply = float("0." + sDecimal)
-    
-    # max 10 mantissa digits
-    x = 0
-
-    while (x <= 30):
-        # not 0.000
-        if (fDecimalToMultiply != 0):
-           
-            # multiply by 2
-            fDecimalToMultiply *= 2
-
-            # get MSb (x).xxx
-            cMSb = str(fDecimalToMultiply)[0]
-            if (x == 0):
-                x = x + to_int(cMSb)
-            else:
-                x = x + 1
-
-            # replace MSb to 0
-            sZeroDotDecimal = '0' + str(fDecimalToMultiply)[1:]
-
-            # for next iteration
-            fDecimalToMultiply = float(sZeroDotDecimal)
-
-            # append to string
-            sFinalBinary = sFinalBinary + cMSb
-        else:
-            x = x + 1
-
-    # return string         
-    return sFinalBinary
 
 def denormalizedCase(sMantissa, sBase2):
     nBase2 = to_int(sBase2)
 
     # -14 is the min
-    nTimesToMove = (abs(nBase2 + 14))
+    nTimesToMove = (abs(nBase2 + 14)-1)
 
     sMantissa = sMantissa.replace('.', '')
 
@@ -64,6 +29,8 @@ def denormalizedCase(sMantissa, sBase2):
         sMantissa = '0' + sMantissa
 
     sMantissa = '0.' + sMantissa
+
+    print(sMantissa)
     
     return sMantissa, str(-15)
 
@@ -164,7 +131,7 @@ def convertDecimalToBinary(sDecimal):
 
     # we return a string because float cannot handle past a couple # of digits
     if("." in sDecimal):
-        sDecimalPortion = convertDecimalOfDecimalToBinary(sDecimal.split(".")[1])
+        sDecimalPortion = str(to_int(sDecimal.split(".")[1]))
         sFinalBinary = sNumberPortion + "." + sDecimalPortion
         return sFinalBinary
     
