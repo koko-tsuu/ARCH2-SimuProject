@@ -21,8 +21,38 @@
     <div class="p-2 text-wrap">
         <h3>Result: </h3>
         
-        <p class="text-center custom-weight">{{ pMan }} x {{ pChk }}<sup>{{ pExp }}</sup> = 0x{{ bHex }}<br> = {{ result }}</p>
+        <p class="text-center custom-weight"><u>{{ pMan }} x {{ pChk }}</u><sup>{{ pExp }}</sup> = 0x{{ bHex }}<br> = {{ result }}</p>
         <p class="text-center custom-weight">{{ pMsg }}</p>
+
+        {% if result != '  '%}
+        <div class="container px-4 m-3 text-center">
+            {% if results|length >= 18%}
+            <div class="row gx-1">
+                <div class="col-sm-1">Sign</div>
+                <div class="col-sm-4">Exponent</div>
+                <div class="col-sm-7">Mantissa</div>
+            </div>
+            {%endif%}
+
+            <div class="row gx-1">
+                {%for i in result%}
+                        {% if i == '1'%}
+                            <div class="col-sm">
+                                <div class="p-1 border border-success bg-success rounded">{{ i }}</div>
+                            </div>
+                        {% elif i == '0'%}
+                        <div class="col-sm">
+                            <div class="p-1 border border-danger bg-danger rounded">{{ i }}</div>
+                        </div>
+                        {% elif i == ' ' %}
+                            <div class="col-sm">
+                                <div class="p-1 border border-secondary bg-secondary rounded" style="visibility: hidden;">&nbsp;</div>
+                            </div>
+                        {% endif %}
+                {%endfor%}
+            </div>
+        </div>
+        {%endif%}
         <div class="mx-auto text-center">
             <form method="GET" action="/save">
                 {% if request.args.get('pChk') is not none %}

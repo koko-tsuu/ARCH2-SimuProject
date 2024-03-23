@@ -70,6 +70,7 @@ def calc():
             f.write(f'Input: {bMantissa} x {bChk}^{bExp}\n\n')
             f.write(f'Hex: 0x{sHex}\n')
             f.write(f'Bin: {sBinary}\n')
+            f.write(f'\n{msg}\n')
 
         return redirect(url_for('index', result=sBinary, bHex=sHex, pMan=bMantissa, pExp=bExp, pChk=bChk, pMsg=msg), code=307)
 
