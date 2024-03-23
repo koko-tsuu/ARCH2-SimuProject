@@ -61,15 +61,15 @@ def inputDecimalBase10(sDecimal, sBase10):
             sDecimal = sub_helpers.base10Move(sDecimal, sBase10)
 
             if (sub_helpers.to_int(sDecimal) <= 65519):
-                sBinary = bin(sub_helpers.to_int(sDecimal))[2:]
+                sBinary = sub_helpers.convertDecimalToBinary(sDecimal)
                 sBinary = '-' + sBinary
             else:
                  return '1 11111 0000000000'
-        
+
         else:
             sDecimal = sub_helpers.base10Move(sDecimal, sBase10)
             if (sub_helpers.to_int(sDecimal) <= 65519):
-                sBinary = bin(sub_helpers.to_int(sDecimal))[2:]
+                sBinary = sub_helpers.convertDecimalToBinary(sDecimal)
             else:
                  return '0 11111 0000000000'
         

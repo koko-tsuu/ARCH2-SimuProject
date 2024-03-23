@@ -123,7 +123,57 @@ def base10Move(sDecimal, sBase10):
             nBase10 += 1
     
     return sDecimal
+
+def convertDecimalToBinary(sDecimal):
+
+    # bin appends 0b at the start
+    sNumberPortion = str(bin(to_int(sDecimal.split(".")[0])))[2:]
+
+    # we return a string because float cannot handle past a couple # of digits
+    if("." in sDecimal):
+        sDecimalPortion = convertDecimalOfDecimalToBinary(sDecimal.split(".")[1])
+        sFinalBinary = sNumberPortion + "." + sDecimalPortion
+        print(sDecimalPortion)
+        return sFinalBinary
+
+    else:
+        return sNumberPortion
     
+def convertDecimalOfDecimalToBinary(sDecimal):
+
+    sFinalBinary = ''
+    fDecimalToMultiply = float("0." + sDecimal)
+
+    # max 10 mantissa digits
+    x = 0
+
+    while (x <= 30):
+        # not 0.000
+        if (fDecimalToMultiply != 0):
+
+            # multiply by 2
+            fDecimalToMultiply *= 2
+
+            # get MSb (x).xxx
+            cMSb = str(fDecimalToMultiply)[0]
+            if (x == 0):
+                x = x + to_int(cMSb)
+            else:
+                x = x + 1
+
+            # replace MSb to 0
+            sZeroDotDecimal = '0' + str(fDecimalToMultiply)[1:]
+
+            # for next iteration
+            fDecimalToMultiply = float(sZeroDotDecimal)
+
+            # append to string
+            sFinalBinary = sFinalBinary + cMSb
+        else:
+            x = x + 1
+
+    # return string         
+    return sFinalBinary
 
 def inputValidationBase2(sMantissa, sBase2):
     sBase2 = str(sBase2)
