@@ -27,6 +27,8 @@ If that doesn't work, please run the python script from the parent directory lik
 ### Problems Encountered
 #### On the topic of Special Cases:
 - It was difficult to represent the difference between sNaN and qNan, so we decided to simply make them representable using the word itself as the input.
+- Giving feedback to the user was important, so there was a lot of if statements / mapping so we would not just throw binary at the user
+
 
 #### On the topic of Python speed
 - Large inputs are not good for Python, calculations were very slow because we used string inputs
