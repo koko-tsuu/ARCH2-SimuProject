@@ -30,8 +30,6 @@ def denormalizedCase(sMantissa, sBase2):
 
     sMantissa = '0.' + sMantissa
 
-    print(sMantissa)
-    
     return sMantissa, str(-15)
 
 def onefFormat(sMantissa, sBase2):
@@ -133,7 +131,6 @@ def convertDecimalToBinary(sDecimal):
     if("." in sDecimal):
         sDecimalPortion = convertDecimalOfDecimalToBinary(sDecimal.split(".")[1])
         sFinalBinary = sNumberPortion + "." + sDecimalPortion
-        print(sDecimalPortion)
         return sFinalBinary
 
     else:
@@ -150,8 +147,6 @@ def convertDecimalOfDecimalToBinary(sDecimal):
     while (x <= 30):
         # not 0.000
         if (sDecimalToMultiply != '0.0'):
-            print(sDecimalToMultiply)
-
             # multiply by 2
             sDecimalToMultiply = multiplicationDecimal(sDecimalToMultiply)
 
