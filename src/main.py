@@ -37,33 +37,34 @@ def calc():
         #hold = [sBinary, sHex, bMantissa, bExp, bBased]
 
         # this portion checks and gives feedback on special cases
-        match sHex:
-            case "0001":
-                msg = "Smallest Positive Denormalized Number"
-            case "03FF":
-                msg = "Largest Denormalized Number"
-            case "0400":
-                msg = "Smallest Positive Normalized Number"
-            case "3BFF":
-                msg = "Largest Number less than One"
-            case "3C01":
-                msg = "Smallest Number larger than One"
-            case "7BFF":
-                msg = "Largest Normal Number"
-            case "8000":
-                msg = "Negative Zero"
-            case "0000":
-                msg = "Positive Zero"
-            case "7C00":
-                msg = "Special Case: Positive Infinity"
-            case "FC00":
-                msg = "Special Case: Negative Infinity"
-            case "7D00":
-                msg = "Special Case: Signalling NaN"
-            case "7E00":
-                msg = "Special Case: Quiet NaN"
-            case _:
-                msg = "Normalized Finite"
+        if "0001" < sHex < "03FF":
+            msg = "Denormalized Number"
+        elif sHex == "0001":
+            msg = "Smallest Positive Denormalized Number"
+        elif sHex == "03FF":
+            msg = "Largest Denormalized Number"
+        elif sHex == "0400":
+            msg = "Smallest Positive Normalized Number"
+        elif sHex == "3BFF":
+            msg = "Largest Number less than One"
+        elif sHex == "3C01":
+            msg = "Smallest Number larger than One"
+        elif sHex == "7BFF":
+            msg = "Largest Normal Number"
+        elif sHex == "8000":
+            msg = "Negative Zero"
+        elif sHex == "0000":
+            msg = "Positive Zero"
+        elif sHex == "7C00":
+            msg = "Special Case: Positive Infinity"
+        elif sHex == "FC00":
+            msg = "Special Case: Negative Infinity"
+        elif sHex == "7D00":
+            msg = "Special Case: Signalling NaN"
+        elif sHex == "7E00":
+            msg = "Special Case: Quiet NaN"
+        else:
+            msg = "Normalized Finite"
 
 
         with open('uploads/out.txt', 'w') as f:
