@@ -25,9 +25,9 @@ def binaryToHex(sBinary):
         
 def inputBinaryMantissaBase2(sMantissa, sBase2):
     if (sub_helpers.inputValidationBase2(sMantissa, sBase2)):
-        if(sMantissa == 'sNaN' or sMantissa == 'snan'):
+        if(sMantissa.lower() == 'snan'):
             return '0 11111 0100000000'
-        elif (sMantissa == 'qNaN' or sMantissa == 'qnan'):
+        elif (sMantissa.lower() == 'qnan'):
             return '0 11111 1000000000'
         else:
             sMSb = '0'
@@ -49,10 +49,11 @@ def inputBinaryMantissaBase2(sMantissa, sBase2):
 
 def inputDecimalBase10(sDecimal, sBase10):
     if (sub_helpers.inputValidationBase10(sDecimal, sBase10)):
-        if(sDecimal == 'sNaN' or sDecimal == 'snan'):
+        print (sDecimal)
+        if(sDecimal.lower() == 'snan'):
                 return '0 11111 0100000000'
             
-        elif (sDecimal == 'qNaN' or sDecimal == 'qnan'):
+        elif (sDecimal.lower() == 'qnan'):
                 return '0 11111 1000000000'
          
         if (sDecimal[0] == '-'):

@@ -175,7 +175,7 @@ def inputValidationBase2(sMantissa, sBase2):
     sBase2 = str(sBase2)
     nDotCounter = 0
 
-    if (sMantissa == 'sNaN' or sMantissa == 'qNaN' or sMantissa == 'snan' or sMantissa == 'qnan'):
+    if (sMantissa.lower() == 'snan' or sMantissa.lower() == 'qnan'):
         return True
 
     if (sMantissa[0] == '-'):
@@ -204,9 +204,9 @@ def inputValidationBase10(sDecimal, sBase10):
     sBase10 = str(sBase10)
     nDotCounter = 0
 
-    if (sDecimal == 'sNaN' or sDecimal == 'qNaN' or sDecimal == 'snan' or sDecimal == 'qnan'):
+    if (sDecimal.lower() == 'snan' or sDecimal.lower() == 'qnan'):
         return True
-
+    
     if (sDecimal[0] == '-'):
         sDecimal = sDecimal[1:]
 
