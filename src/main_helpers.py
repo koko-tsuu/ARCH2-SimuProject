@@ -57,14 +57,20 @@ def inputDecimalBase10(sDecimal, sBase10):
          
         if (sDecimal[0] == '-'):
             sDecimal = sDecimal[1:]
-                
             sDecimal = sub_helpers.base10Move(sDecimal, sBase10)
-            sBinary = sub_helpers.convertDecimalToBinary(sDecimal)
-            sBinary = '-' + sBinary
+
+            if (sub_helpers.to_int(sDecimal) <= 65519):
+                sBinary = sub_helpers.convertDecimalToBinary(sDecimal)
+                sBinary = '-' + sBinary
+            else:
+                 return '1 11111 0000000000'
         
         else:
             sDecimal = sub_helpers.base10Move(sDecimal, sBase10)
-            sBinary = sub_helpers.convertDecimalToBinary(sDecimal)
+            if (sub_helpers.to_int(sDecimal) <= 65519):
+                sBinary = sub_helpers.convertDecimalToBinary(sDecimal)
+            else:
+                 return '0 11111 0000000000'
         
     else: 
             return '0 11111 0100000000'

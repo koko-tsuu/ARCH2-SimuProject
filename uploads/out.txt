@@ -1,6 +1,6 @@
-Input: 1 x 2^-14
+Input: 65519 x 10^0
 
-Hex: 0x0400
-Bin: 0 00001 0000000000
+Hex: 0x7BFF
+Bin: 0 11110 1111111111
 
-Smallest Positive Normalized Number
+Largest Normal Number
