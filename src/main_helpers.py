@@ -40,6 +40,9 @@ def inputBinaryMantissaBase2(sMantissa, sBase2):
            
             nBase2 = sub_helpers.to_int(sBase2)
             
+            if(nBase2 > 15 or sMantissa > '1.111111111101111'):
+                ret = sMSb + ' 11111 0000000000'
+                return ret
              # if denormalized
             if (nBase2 < -14):
                 sMantissa, sBase2 = sub_helpers.denormalizedCase(sMantissa, sBase2)
