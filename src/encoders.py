@@ -1,3 +1,4 @@
+import sub_helpers
 def encodeToFloatingFormat(sMSb, sMantissa, sBase2):
     
     sMantissa, sExponent = encodeExponent(sMantissa, sBase2)
@@ -28,15 +29,19 @@ def encodeMantissa(sMantissa):
     # remove "X."
     sTruncatedMantissa = sMantissa[2:]
 
-    if(sTruncatedMantissa != '0'):
+    # there should be at least one '1'
+    if('1' in sTruncatedMantissa):
 
         if(len(sTruncatedMantissa) > 10):
-            sTruncatedMantissa = sTruncatedMantissa[0:10]
-        
+            if(sub_helpers.toRoundUp(sTruncatedMantissa)):
+                return sub_helpers.handleCarryOver(sTruncatedMantissa)
+            else:
+                return sTruncatedMantissa[0:10]
+    
         else:
             while(len(sTruncatedMantissa) < 10):
                 sTruncatedMantissa = sTruncatedMantissa + '0'
-    
-        return sTruncatedMantissa
+                return sTruncatedMantissa
     else:
         return "0000000000"
+    

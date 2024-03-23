@@ -1,4 +1,6 @@
-Input: 2 x 10^2
+Input: 1 x 2^10000
 
-Hex: 0x5A40
-Bin: 0 10110 1001000000
+Hex: 0x7C00
+Bin: 0 11111 0000000000
+
+Special Case: Positive Infinity

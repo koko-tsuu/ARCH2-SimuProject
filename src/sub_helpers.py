@@ -256,3 +256,52 @@ def to_int(sNumber):
             nFinalNumber = nFinalNumber + (nTensCounter * int(sNumber[x]))
 
     return nFinalNumber
+
+def toRoundUp(sTruncatedMantissa):
+    LsbIsEven = (sTruncatedMantissa[9] == '0')
+    sRoundToEven = sTruncatedMantissa[10:]
+    toRound = False
+
+     # first element is 1 (10...0 -> round to even)
+    if (sRoundToEven[0] == '1'):
+        toRound = True
+
+        # check all elements 
+        for x in range(1, len(sRoundToEven)):
+            # not a zero
+            if (sRoundToEven[x] != '0'):
+                break
+
+            # last element and is 0
+            elif (sRoundToEven[x] == '0' and x == (len(sRoundToEven)-1)):
+                if (LsbIsEven):
+                    toRound = False
+    print(toRound)
+    return toRound
+
+def handleCarryOver(sTruncatedMantissa):
+    handledCarryOver = False
+    sFinal = ''
+    x = 0
+    copyIndex = -1
+
+    sTemp = sTruncatedMantissa[0:10]
+
+    # handle carry over
+    while(not handledCarryOver and x <= 9):
+        if (sTemp[9-x] == '0' and not handledCarryOver):
+            handledCarryOver = True
+            copyIndex = (9-x)
+
+        x+=1
+    # no more space
+    if (not handledCarryOver):
+        sFinal = '1000000000'
+
+    else:
+        sFinal = sTemp[0:copyIndex] + '1' 
+
+    while(len(sFinal) <= 9):
+        sFinal = sFinal + '0'
+        
+    return sFinal
