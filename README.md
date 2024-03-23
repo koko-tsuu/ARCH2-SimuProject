@@ -8,7 +8,7 @@
 #### Tan, Colleen Julianna
 #### Uy, Orrin Landon
 
-## (Screenshots and video demo can be found in "testcases" folder)
+### (Screenshots and video demo can be found in "testcases" folder)
 
 ## To run
 
