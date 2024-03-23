@@ -142,30 +142,28 @@ def convertDecimalToBinary(sDecimal):
 def convertDecimalOfDecimalToBinary(sDecimal):
 
     sFinalBinary = ''
-    fDecimalToMultiply = float("0." + sDecimal)
+    sDecimalToMultiply = "0." + sDecimal
 
-    # max 10 mantissa digits
+    # max 30 mantissa digits
     x = 0
 
     while (x <= 30):
         # not 0.000
-        if (fDecimalToMultiply != 0):
+        if (sDecimalToMultiply != '0.0'):
+            print(sDecimalToMultiply)
 
             # multiply by 2
-            fDecimalToMultiply *= 2
+            sDecimalToMultiply = multiplicationDecimal(sDecimalToMultiply)
 
             # get MSb (x).xxx
-            cMSb = str(fDecimalToMultiply)[0]
+            cMSb = sDecimalToMultiply[0]
             if (x == 0):
-                x = x + to_int(cMSb)
+                x = x + int(cMSb)
             else:
                 x = x + 1
 
             # replace MSb to 0
-            sZeroDotDecimal = '0' + str(fDecimalToMultiply)[1:]
-
-            # for next iteration
-            fDecimalToMultiply = float(sZeroDotDecimal)
+            sDecimalToMultiply = '0' + sDecimalToMultiply[1:]
 
             # append to string
             sFinalBinary = sFinalBinary + cMSb
@@ -174,6 +172,32 @@ def convertDecimalOfDecimalToBinary(sDecimal):
 
     # return string         
     return sFinalBinary
+
+
+def multiplicationDecimal(sDecimal):
+    nCarryover = 0
+    sTemp = ''
+    sProduct = ''
+
+    for x in range(len(sDecimal)-1, 1, -1):
+        sTemp = str(nCarryover + int(sDecimal[x]) * 2)
+        if (len(sTemp) > 1):
+            # last digit
+            if (x == 2):
+                sProduct = sTemp[0] + '.' + sTemp[1] + sProduct
+            else:   
+                nCarryover = int(sTemp[0])
+                sProduct = sTemp[1] + sProduct
+
+        else:
+            nCarryover = 0
+            if (x == 2):
+                sProduct =  '0.' + sTemp[0] + sProduct
+            else:
+                sProduct = sTemp[0] + sProduct
+
+    return sProduct
+
 
 def inputValidationBase2(sMantissa, sBase2):
     sBase2 = str(sBase2)
