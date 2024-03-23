@@ -21,9 +21,21 @@ If that doesn't work, please run the python script from the parent directory lik
 `py src/main.py`, and then access from your browser
 
 
-### (Screenshots and video demo can be found in "testcases" folder)
-![alt text](./testcases/csarch2asinput(BIN).png?raw=true)
+### Test Cases (Screenshots and video demo can be found in "testcases" folder)
+#### Special Cases
 
+
+##### Not a Number (NaN)
+- Signalling NaN (sNaN)
+![snan](./testcases/csarch2asinput(BIN).png?raw=true)
+- Quiet NaN (qNaN)
+![qnan](./testcases/qnanDec.png?raw=true)
+
+##### Infinities
+- Positive Infinity
+![pinf](./testcases/positiveInfiDec(firstcase).png?raw=true)
+- Negative Infinity
+![ninf](/testcases/negativeInfiDec.png?raw=true)
 
 ## Project Experience
 - This project was made using Python w/ Flask, HTML, Bootstrap 5, and JINJA
