@@ -9,6 +9,7 @@
 - Output: (1) binary-16 format output with space between section (2) its hexadecimal equivalent (3)
 with option to output in text file as download from browser
 - Input mode may be toggled
+- **NOTE:** The term "Largest" in this context is in terms of magnitude: "Largest-magnitude"
 
 ## [Access the website here](http://nemurinou.pythonanywhere.com/)
 
