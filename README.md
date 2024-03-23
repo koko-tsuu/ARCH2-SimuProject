@@ -22,19 +22,19 @@ If that doesn't work, please run the python script from the parent directory lik
 `py src/main.py`, and then access from your browser
 
 
-### Test Cases 
+## Test Cases 
 - (Screenshots and video demo can also be found in the "testcases" folder)
 - Short video: https://youtu.be/mMTbna9AgHQ
-#### Special Cases
+### Special Cases
 
 
-##### Not a Number (NaN)
+#### Not a Number (NaN)
 - Signalling NaN (sNaN)
 ![snan](./testcases/csarch2asinput(BIN).png?raw=true)
 - Quiet NaN (qNaN)
 ![qnan](./testcases/qnanDec.png?raw=true)
 
-##### Infinities
+#### Infinities
 - Positive Infinity
 ![pinf](./testcases/positiveInfiDec(firstcase).png?raw=true)
 - Negative Infinity
