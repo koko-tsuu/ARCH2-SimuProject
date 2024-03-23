@@ -8,7 +8,7 @@
 - Input: (1) binary mantissa and base-2, decimal mantissa and base-10, inclusive of special cases
 - Output: (1) binary-16 format output with space between section (2) its hexadecimal equivalent (3)
 with option to output in text file as download from browser
-- Input mode is toggle-able
+- Input mode may be toggled
 
 ## How to Run on your Machine
 - Ensure that Python is installed and can be found in the PATH of your device's user and system variables.
@@ -21,7 +21,7 @@ If that doesn't work, please run the python script from the parent directory lik
 
 ### (Screenshots and video demo can be found in "testcases" folder)
 
-### Project Experience
+## Project Experience
 - This project was made using Python w/ Flask, HTML, Bootstrap 5, and JINJA
 
 ### Problems Encountered
