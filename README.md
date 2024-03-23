@@ -10,6 +10,8 @@
 with option to output in text file as download from browser
 - Input mode is toggle-able
 
+## [Access the website here](http://nemurinou.pythonanywhere.com/)
+
 ## How to Run on your Machine
 - Ensure that Python is installed and can be found in the PATH of your device's user and system variables.
 1. Open start_server.bat
