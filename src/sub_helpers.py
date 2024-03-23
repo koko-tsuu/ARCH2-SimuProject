@@ -124,22 +124,10 @@ def base10Move(sDecimal, sBase10):
     
     return sDecimal
     
-def convertDecimalToBinary(sDecimal):
-    
-    # bin appends 0b at the start
-    sNumberPortion = str(bin(to_int(sDecimal.split(".")[0])))[2:]
-
-    # we return a string because float cannot handle past a couple # of digits
-    if("." in sDecimal):
-        sDecimalPortion = str(to_int(sDecimal.split(".")[1]))
-        sFinalBinary = sNumberPortion + "." + sDecimalPortion
-        return sFinalBinary
-    
-    else:
-        return sNumberPortion
 
 def inputValidationBase2(sMantissa, sBase2):
     sBase2 = str(sBase2)
+    sMantissa = str(sMantissa)
     nDotCounter = 0
 
     if (sMantissa.lower() == 'snan' or sMantissa.lower() == 'qnan'):
@@ -160,7 +148,7 @@ def inputValidationBase2(sMantissa, sBase2):
     
     try:
         for x in sBase2:
-            to_int(x)
+            int(x)
     except:
         return False
     
@@ -185,13 +173,13 @@ def inputValidationBase10(sDecimal, sBase10):
             if (x == '.' and nDotCounter == 0):
                 nDotCounter+=1
             else:
-                to_int(x)
+                int(x)
     except:
         return False
     
     try:
         for x in sBase10:
-            to_int(x)
+            int(x)
     except:
         return False
     

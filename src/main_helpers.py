@@ -37,9 +37,10 @@ def inputBinaryMantissaBase2(sMantissa, sBase2):
                 sMSb = '1'
 
             sMantissa, sBase2 = sub_helpers.onefFormat(sMantissa, sBase2)
-
-            # if denormalized
+           
             nBase2 = sub_helpers.to_int(sBase2)
+            
+             # if denormalized
             if (nBase2 < -14):
                 sMantissa, sBase2 = sub_helpers.denormalizedCase(sMantissa, sBase2)
       
@@ -60,7 +61,7 @@ def inputDecimalBase10(sDecimal, sBase10):
             sDecimal = sub_helpers.base10Move(sDecimal, sBase10)
 
             if (sub_helpers.to_int(sDecimal) <= 65519):
-                sBinary = sub_helpers.convertDecimalToBinary(sDecimal)
+                sBinary = bin(sub_helpers.to_int(sDecimal))[2:]
                 sBinary = '-' + sBinary
             else:
                  return '1 11111 0000000000'
@@ -68,7 +69,7 @@ def inputDecimalBase10(sDecimal, sBase10):
         else:
             sDecimal = sub_helpers.base10Move(sDecimal, sBase10)
             if (sub_helpers.to_int(sDecimal) <= 65519):
-                sBinary = sub_helpers.convertDecimalToBinary(sDecimal)
+                sBinary = bin(sub_helpers.to_int(sDecimal))[2:]
             else:
                  return '0 11111 0000000000'
         
