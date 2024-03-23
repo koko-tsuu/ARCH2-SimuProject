@@ -28,14 +28,18 @@ If that doesn't work, please run the python script from the parent directory lik
 #### On the topic of Special Cases:
 - It was difficult to represent the difference between sNaN and qNan, so we decided to simply make them representable using the word itself as the input.
 - Giving feedback to the user was important, so there was a lot of if statements / mapping so we would not just throw binary at the user
-
-
+- This also meant that we needed to use strings as our input.
+- 
 #### On the topic of Python speed
-- Large inputs are not good for Python, calculations were very slow because we used string inputs
+- Large inputs are not good for Python as calculations were very slow because we used string inputs.
 
-#### On the topic of Python str to int conversion limit
-- Inputting strings and converting them to int had a length limit, so we opted code a custom to_int() function that iterates through the digits
+#### On the topic of manipulating large ints or floats in Python
+- Inputting strings and converting them to int had a length limit, so we opted code a custom to_int() function that iterates through the digits.
+- This means having to manually perform multiplication, move with base 10 for easier conversion to binary, convert to 1.f format, and etc.
+- This was also the primary reason why we chose to use strings to read and manipulate values.
 
+#### On the topic of binary conversion with decimal numbers
+- bin() cannot convert float or decimal, so the convertDecimalOfDecimalToBinary function was needed to manually convert decimal numbers (ex. 0.5). 
 
 
 #### Prepared by:
